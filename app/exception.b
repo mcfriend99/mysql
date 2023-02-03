@@ -17,17 +17,17 @@ class MysqlException < Exception {
   var sql_state = 'HY0000'
 
   /**
-   * The error message as returned by MySQL without it's exception formatting
+   * The error message as returned by MySQL without it's exception formatting.
    * @type string
    */
   var error_message = ''
 
-  /**
-   * MysqlException constructor
-   * 
-   * @param string|ErrorPacket message
-   * @returns MysqlException
-   */
+  # /**
+  #  * MysqlException constructor
+  #  * 
+  #  * @param string|ErrorPacket message
+  #  * @returns MysqlException
+  #  */
   MysqlException(message) {
     if is_string(message)
       self.message = message

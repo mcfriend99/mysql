@@ -14,7 +14,7 @@ import .result { * }
 import .exception { * }
 
 /**
- * Mysql class implements the features need for Mysql database connection and queries.
+ * The Mysql class implements the features need for Mysql database connection and queries.
  */
 class Mysql {
   var _client

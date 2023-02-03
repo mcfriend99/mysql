@@ -2,13 +2,47 @@
   url: /
   links:
     - title: "Getting Started"
-      url: "/index"
+      url: "index"
       children:
         - title: Installation
-          url: "/index#installation"
+          url: "index#installation"
         - title: "Connecting to MySQL"
-          url: "/index#connecting-to-mysql"
+          url: "index#connecting-to-mysql"
         - title: "Running queries"
-          url: "/index#running-queries"
+          url: "index#running-queries"
         - title: "Display result in CLI applications"
-          url: "/index#display-result-in-cli-applications"
+          url: "index#display-result-in-cli-applications"
+        - title: "Important Notice"
+          url: "index#important-notice"
+    - title: "Exported Functions"
+      url: "functions"
+    - title: Classes
+      url: "classes"
+      children:
+        - title: Mysql
+          url: "mysql"
+          children:
+            - title: Properties
+              url: "mysql#properties"
+            - title: Methods
+              url: "mysql#methods"
+        - title: MysqlResult
+          url: "mysqlresult"
+          children:
+            - title: Properties
+              url: "mysqlresult#properties"
+        - title: MysqlResultSet
+          url: "mysqlresultset"
+          children:
+            - title: Properties
+              url: "mysqlresultset#properties"
+        - title: TermTable
+          url: "termtable"
+          children:
+            - title: Methods
+              url: "termtable#methods"
+        - title: MysqlException
+          url: "exception"
+          children:
+            - title: Properties
+              url: "exceptions#properties"

@@ -1,6 +1,7 @@
 markdown:         redcarpet
+highlighter:      pygments
 
-remote_theme: tomjoht/documentation-theme-jekyll
+remote_theme: vsoch/docsy-jekyll
 url: mcfriend99.github.io
 baseurl: /
 

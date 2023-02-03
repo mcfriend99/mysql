@@ -272,12 +272,12 @@ See [TermTable](#class-termtable) for more information.
 
   > The options dictionary can contain one or more of the following entries:
   >
-  > - bool `show_header` [default: true]
-  > - bool `show_primary_key` [default: false]
-  > - bool `show_foreign_key` [default: false]
-  > - bool `show_length`  [default: false]
-  > - string `primary_key_text` [default: `+PK`]
-  > - string `foriegn_key_text` [default: `+FK`]
+  > - *bool* `show_header` [default: true]
+  > - *bool* `show_primary_key` [default: false]
+  > - *bool* `show_foreign_key` [default: false]
+  > - *bool* `show_length`  [default: false]
+  > - *string* `primary_key_text` [default: `+PK`]
+  > - *string* `foriegn_key_text` [default: `+FK`]
 
   - **Methods:**
     - **`render()`**: Renders the table to string.

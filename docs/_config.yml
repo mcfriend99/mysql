@@ -1,5 +1,5 @@
-markdown:         redcarpet
-highlighter:      pygments
+markdown: redcarpet
+highlighter: pygments
 
 remote_theme: vsoch/docsy-jekyll
 url: mcfriend99.github.io
@@ -7,3 +7,10 @@ baseurl: /
 
 title: mysql
 tagline: 'A MySQL client implemented in pure Blade.'
+
+logo_pixels: 34
+color: "#30638e"
+accentColor: red # purple, green, etc.
+themeColor: red # purple, green, blue, orange, purple, grey
+fixedNav: 'true' # true or false
+feedback: true

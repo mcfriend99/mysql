@@ -19,7 +19,7 @@ The library currently only supports MySQL 5.7 and below.
 
 You can connect to a MySQL instance after creating a valid Mysql object by calling the `connect()` method on the object. For example:
 
-```
+```js
 import mysql
 
 var con = mysql('localhost', 3306, 'root', '')
@@ -29,7 +29,7 @@ else echo 'Connection failed!'
 
 You can initialize the database you want to use when creating the object like this:
 
-```
+```js
 import mysql
 
 var con = mysql('localhost', 3306, 'root', '', 'myapp')
@@ -39,7 +39,7 @@ else echo 'Connection failed to DB myapp!'
 
 **Note** that if you do not specify the name of the database, you will need to call the `use_db()` method to initialize a database before you run your queries like this:
 
-```
+```js
 import mysql
 
 var con = mysql('localhost', 3306, 'root', '')
@@ -54,9 +54,9 @@ if con.connect() {
 
 ## Running queries
 
-After successfully connecting to a MySQL instance and initialized a database, you can run your queries using the `query()` method. It is important to note query method either returns a [MysqlResult](#) or [MysqlResultSet](#), the later only being returned for queries that return rows while other queries return the former.
+After successfully connecting to a MySQL instance and initialized a database, you can run your queries using the `query()` method. It is important to note query method either returns a [MysqlResult](#class-mysqlresult) or [MysqlResultSet](#class-mysqlresultset), the later only being returned for queries that return rows while other queries return the former.
 
-```
+```js
 var result = con.query('SELECT * FROM users')
 echo result.rows
 echo result.fields
@@ -66,7 +66,7 @@ You can iterate over a *MysqlResultSet* using the for loop because it is an iter
 
 E.g.
 
-```
+```js
 for user in con.query('SELECT * FROM users WHRE id <=> 5') {
   echo user.email
 }
@@ -81,25 +81,25 @@ echo con.last_insert_id
 
 For querys that do not return rows, you can easily get the number of affected rows like in the following:
 
-```
+```js
 var result = con.query('DELETE FROM users WHERE deleted_at != NULL;')
 echo result.affected_rows
 ```
 
-See [MysqlResult](#) and [MysqlResultSet](#) for more.
+See [MysqlResult](#class-mysqlresult) and [MysqlResultSet](#class-mysqlresultset) for more.
 
 ## Display result in CLI application
 
 The library comes with an handy class for CLI based applications to display MySQL tables in the terminal/command prompts &mdash; *TermTable*. Here is a basic usage.
 
-```
+```js
 var result = con.query('SELECT * FROM users')
 echo mysql.TermTable(result).render()
 ```
 
 You should see something similar to this:
 
-```
+```s
 +------------+--------------+-------------------+---------------------+
 | id(20) +PK | name(196605) | phone(42)         | created_at(19)      |
 +------------+--------------+-------------------+---------------------+
@@ -112,7 +112,7 @@ You should see something similar to this:
 +------------+--------------+-------------------+---------------------+
 ```
 
-See [#](TermTable) for more information.
+See [TermTable](#class-termtable) for more information.
 
 ## Library Functions
 

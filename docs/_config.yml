@@ -3,6 +3,7 @@ highlighter:      pygments
 
 remote_theme: poole/hyde
 url: mcfriend99.github.io
+baseurl: /mysql
 
 title: mysql
 tagline: 'A MySQL client implemented in pure Blade.'

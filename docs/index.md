@@ -13,7 +13,8 @@ nyssa install mysql
 
 ## Important Notice
 
-The library currently only supports MySQL 5.7 and below.
+- The library currently only supports MySQL 5.7 and below.
+- There is no support for prepared statements yet.
 
 ## Connecting to MySQL
 
@@ -88,7 +89,7 @@ echo result.affected_rows
 
 See [MysqlResult](#class-mysqlresult) and [MysqlResultSet](#class-mysqlresultset) for more.
 
-## Display result in CLI application
+## Display result in CLI applications
 
 The library comes with an handy class for CLI based applications to display MySQL tables in the terminal/command prompts &mdash; *TermTable*. Here is a basic usage.
 

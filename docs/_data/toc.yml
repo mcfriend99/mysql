@@ -1,2 +1,14 @@
 - title: Documentation
   url: /
+  links:
+    - title: "Getting Started"
+      url: "/index"
+      children:
+        - title: Installation
+          url: "/index#installation"
+        - title: "Connecting to MySQL"
+          url: "/index#connecting-to-mysql"
+        - title: "Running queries"
+          url: "/index#running-queries"
+        - title: "Display result in CLI applications"
+          url: "/index#display-result-in-cli-applications"

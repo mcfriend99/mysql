@@ -130,67 +130,67 @@ See [TermTable](#class-termtable) for more information.
 
 ## Library Classes
 
-### **`Mysql`**
+- ### **`Mysql`**
   
-Mysql class implements the features need for Mysql database connection and queries.
+  Mysql class implements the features need for Mysql database connection and queries.
 
-- **Constructor**:
-  - *string* `host`
-  - *number* `port`
-  - *string* `username`
-  - *string* `password`
-  - *string* `database` (Optional)
+  - **Constructor**:
+    - *string* `host`
+    - *number* `port`
+    - *string* `username`
+    - *string* `password`
+    - *string* `database` (Optional)
 
-- **Variables:**
-  - *dictionary* **`info`**: A dictionary containing information about the current MySQL instance.
+  - **Variables:**
+    - *dictionary* **`info`**: A dictionary containing information about the current MySQL instance.
 
-    The dictionary contains the following entries:
+      The dictionary contains the following entries:
 
-    - *string* `protocol`
-    - *string* `server_version`
-    - *string* `connection_id`
-    - *dictionary* `server_capabilities`
+      - *string* `protocol`
+      - *string* `server_version`
+      - *string* `connection_id`
+      - *dictionary* `server_capabilities`
+        
+        This dictionary contains the following subentries:
+        
+        - *bool* `Long Password`
+        - *bool* `Found Rows`
+        - *bool* `Long Column Flags`
+        - *bool* `Connect With Database`
+        - *bool* `Don't Allow database.table.column`
+        - *bool* `Can use compression protocol`
+        - *bool* `ODBC Client`
+        - *bool* `Can Use LOAD DATA LOCAL`
+        - *bool* `Ignore Spaces before '('`
+        - *bool* `Speaks 4.1 protocol (new flag)`
+        - *bool* `Interactive Client`
+        - *bool* `Switch to SSL after handshake`
+        - *bool* `Ignore sigpipes`
+        - *bool* `Knows about transactions`
+        - *bool* `Speaks 4.1 protocol (old flag)`
+        - *bool* `Can do 4.1 authentication`
+
+      - *string* `server_language`
+      - *string* `server_status`
+      - *dictionary* `server_extended_capabilities`
+
+        This dictionary contains the following entries:
+
+        - *bool* `Multiple statements`
+        - *bool* `Multiple results`
+        - *bool* `PS Multiple results`
+        - *bool* `Plugin Auth`
+        - *bool* `Connect attrs`
+        - *bool* `Plugin Auth LENENC Client Data`
+        - *bool* `Client can handle expired passwords`
+        - *bool* `Session variable tracking`
+        - *bool* `Deprecate EOF`
+
+      - *string* `authentication_plugin`
       
-      This dictionary contains the following subentries:
-      
-      - *bool* `Long Password`
-      - *bool* `Found Rows`
-      - *bool* `Long Column Flags`
-      - *bool* `Connect With Database`
-      - *bool* `Don't Allow database.table.column`
-      - *bool* `Can use compression protocol`
-      - *bool* `ODBC Client`
-      - *bool* `Can Use LOAD DATA LOCAL`
-      - *bool* `Ignore Spaces before '('`
-      - *bool* `Speaks 4.1 protocol (new flag)`
-      - *bool* `Interactive Client`
-      - *bool* `Switch to SSL after handshake`
-      - *bool* `Ignore sigpipes`
-      - *bool* `Knows about transactions`
-      - *bool* `Speaks 4.1 protocol (old flag)`
-      - *bool* `Can do 4.1 authentication`
+    - *int* **`last_insert_id`**: The numeric ID of the last databse insert operation.
 
-    - *string* `server_language`
-    - *string* `server_status`
-    - *dictionary* `server_extended_capabilities`
-
-      This dictionary contains the following entries:
-
-      - *bool* `Multiple statements`
-      - *bool* `Multiple results`
-      - *bool* `PS Multiple results`
-      - *bool* `Plugin Auth`
-      - *bool* `Connect attrs`
-      - *bool* `Plugin Auth LENENC Client Data`
-      - *bool* `Client can handle expired passwords`
-      - *bool* `Session variable tracking`
-      - *bool* `Deprecate EOF`
-
-    - *string* `authentication_plugin`
-    
-  - *int* **`last_insert_id`**: The numeric ID of the last databse insert operation.
-
-- **Methods:**
+  - **Methods:**
   - **`connect()`**: Connects to the database.
     - **Returns:** *bool* indicating if the connection was successful or not.
     - **Throws:** *MysqlException*
@@ -218,21 +218,21 @@ Mysql class implements the features need for Mysql database connection and queri
 
 
 
-### **`MysqlResult`**
+- ### **`MysqlResult`**
 
-*MysqlResult* object is the result returned for non-query commands on MySQL.
+  *MysqlResult* object is the result returned for non-query commands on MySQL.
 
-- **Variables:**
-  - *bytes* `header`: The result header as returned in the Mysql connection.
-  - *int* `affected_rows`: The number of rows affected by the corresponding Mysql command.
-  - *string* `server_status`: The status of the server after executing the corresponding query.
-  - *string* `warnings`: The warnings returned from Mysql in the result.
+  - **Variables:**
+    - *bytes* `header`: The result header as returned in the Mysql connection.
+    - *int* `affected_rows`: The number of rows affected by the corresponding Mysql command.
+    - *string* `server_status`: The status of the server after executing the corresponding query.
+    - *string* `warnings`: The warnings returned from Mysql in the result.
 
-### **`MysqlResultSet`**
+- ### **`MysqlResultSet`**
 
-*MysqlResultSet* object is the result returned from a query like operation on MySQL table.
+  *MysqlResultSet* object is the result returned from a query like operation on MySQL table.
 
-- **Variables:**
+  - **Variables:**
   - *List&lt;dictionary&gt;* `fields`: The table fields returned in the response. 
 
     Each dictionary contains the following entries:
@@ -262,39 +262,37 @@ Mysql class implements the features need for Mysql database connection and queri
 
   - *List&lt;dictionary&gt;* `rows`: The result rows returned from the query. The content of each dictionary will based on the result of a query.
 
-### **`TermTable`**
+- ### **`TermTable`**
 
-*TermTable* class implements a simple terminal based table that can be used to display *MysqlResultSet* in CLI based applications.
+  *TermTable* class implements a simple terminal based table that can be used to display *MysqlResultSet* in CLI based applications.
 
-- **Constructor:**
-  - *MysqlResultSet* `result`: A valid resultset returned from Mysql::query()
-  - *dictionary* `options`: Used for configuring how TermTable displays data.
+  - **Constructor:**
+    - *MysqlResultSet* `result`: A valid resultset returned from Mysql::query()
+    - *dictionary* `options`: Used for configuring how TermTable displays data.
 
-> The options dictionary can contain one or more of the following entries:
->
-> - bool `show_header` [default: true]
-> - bool `show_primary_key` [default: false]
-> - bool `show_foreign_key` [default: false]
-> - bool `show_length`  [default: false]
-> - string `primary_key_text` [default: `+PK`]
-> - string `foriegn_key_text` [default: `+FK`]
+  > The options dictionary can contain one or more of the following entries:
+  >
+  > - bool `show_header` [default: true]
+  > - bool `show_primary_key` [default: false]
+  > - bool `show_foreign_key` [default: false]
+  > - bool `show_length`  [default: false]
+  > - string `primary_key_text` [default: `+PK`]
+  > - string `foriegn_key_text` [default: `+FK`]
 
-- **Methods:**
-  - **`render()`**: Renders the table to string.
+  - **Methods:**
+    - **`render()`**: Renders the table to string.
 
-    - **Returns:** *string*
-
-
+      - **Returns:** *string*
 
 
-### **`MysqlException`** *inherits* *Exception*
+- ### **`MysqlException`** *inherits* *Exception*
 
-Mysql Exception class. This class represents all kinds of MySQL errors.
+  Mysql Exception class. This class represents all kinds of MySQL errors.
 
-- **Variables:**
-  - *int* `error_code`: The MySQL error code
-  - *string* `sql_state`: The MySQL state when the exception occurred.
-  - *string* `error_message`: The error message as returned by MySQL without it's exception formatting.
+  - **Variables:**
+    - *int* `error_code`: The MySQL error code
+    - *string* `sql_state`: The MySQL state when the exception occurred.
+    - *string* `error_message`: The error message as returned by MySQL without it's exception formatting.
 
 
 ### License

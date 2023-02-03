@@ -50,7 +50,7 @@ if con.connect() {
 
 ## Running queries
 
-After successfully connecting to a MySQL instance and initialized a database, you can run your queries using the `query()` method. It is important to note query method either returns a [MysqlResult](#class-mysqlresult) or [MysqlResultSet](#class-mysqlresultset), the later only being returned for queries that return rows while other queries return the former.
+After successfully connecting to a MySQL instance and initialized a database, you can run your queries using the `query()` method. It is important to note query method either returns a [MysqlResult](mysqlresult) or [MysqlResultSet](mysqlresultset), the later only being returned for queries that return rows while other queries return the former.
 
 ```js
 var result = con.query('SELECT * FROM users')
@@ -70,7 +70,7 @@ for user in con.query('SELECT * FROM users WHRE id <=> 5') {
 
 When you run an `INSERT` operation, you can retrieve the last insert ID from the Mysql object iteself like in this example:
 
-```
+```js
 con.query("INSERT INTO table (name, age) VALUES ('Kelly Clarkson', 25);")
 echo con.last_insert_id
 ```
@@ -82,7 +82,7 @@ var result = con.query('DELETE FROM users WHERE deleted_at != NULL;')
 echo result.affected_rows
 ```
 
-See [MysqlResult](#class-mysqlresult) and [MysqlResultSet](#class-mysqlresultset) for more.
+See [MysqlResult](mysqlresult) and [MysqlResultSet](mysqlresultset) for more.
 
 ## Display result in CLI applications
 
@@ -108,7 +108,7 @@ You should see something similar to this:
 +------------+--------------+-------------------+---------------------+
 ```
 
-See [TermTable](#class-termtable) for more information.
+See [TermTable](termtable) for more information.
 
 
 ## Important Notice

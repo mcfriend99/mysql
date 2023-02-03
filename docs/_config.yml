@@ -1,0 +1,7 @@
+markdown:         redcarpet
+highlighter:      pygments
+
+remote_theme: poole/hyde
+
+title: mysql
+tagline: 'A MySQL client implemented in pure Blade.'

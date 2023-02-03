@@ -6,7 +6,7 @@ A MySQL client implemented in pure Blade.
 
 - **Name:** mysql
 - **Version:** 1.0.0
-- **Homepage:** _Homepage goes here._
+- **Homepage:** https://github.com/mcfriend99/mysql
 - **Tags:** mysql, database, sql, mysql-client, db
 - **Author:** Richard Ore <eqliqandfriends@gmail.com>
 - **License:** MIT
@@ -23,7 +23,7 @@ nyssa install mysql
 ## Documentation
 ---
 
-Online documentation is available at [https://mysql.github.com](mysql.github.com).
+Online documentation is available at [mcfriend99.github.io/mysql](https://mcfriend99.github.io/mysql/).
 
 ## Important Notice
 ---

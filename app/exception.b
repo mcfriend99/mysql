@@ -1,5 +1,5 @@
 /**
- * class MysqlException
+ * Mysql Exception class. This class represents all kinds of MySQL errors.
  * 
  * @extends Exception
  */

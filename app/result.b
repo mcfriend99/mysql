@@ -1,5 +1,5 @@
 /**
- * MysqlResult is the result returned for non-query commands on MySQL
+ * MysqlResult object is the result returned for non-query commands on MySQL
  */
 class MysqlResult {
   /**
@@ -35,7 +35,7 @@ class MysqlResult {
 }
 
 /**
- * MysqlResultSet is the result returned from a query like operation on MySQL table.
+ * MysqlResultSet object is the result returned from a query like operation on MySQL table.
  */
 class MysqlResultSet {
   /**

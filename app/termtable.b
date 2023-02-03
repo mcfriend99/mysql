@@ -5,7 +5,7 @@ import .result {
 
 
 /**
- * class TermTable implements a simple terminal based table that can be used to 
+ * TermTable class implements a simple terminal based table that can be used to 
  * display MysqlResultSet in CLI based applications.
  */
 class TermTable {

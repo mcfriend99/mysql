@@ -2,7 +2,7 @@
   "name": "mysql", 
   "version": "1.0.0", 
   "description": "A MySQL client implemented in pure Blade.", 
-  "homepage": "", 
+  "homepage": "https://github.com/mcfriend99/mysql", 
   "tags": [
     "mysql", 
     "database", 

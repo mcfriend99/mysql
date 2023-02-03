@@ -130,9 +130,9 @@ See [TermTable](#class-termtable) for more information.
 
 ## Library Classes
 
-### *class* **`Mysql`**:
+### **`Mysql`**
   
-Class Mysql implements the features need for Mysql database connection and queries.
+Mysql class implements the features need for Mysql database connection and queries.
 
 - **Constructor**:
   - *string* `host`
@@ -218,9 +218,9 @@ Class Mysql implements the features need for Mysql database connection and queri
 
 
 
-### *class* **`MysqlResult`**:
+### **`MysqlResult`**
 
-*MysqlResult* is the result returned for non-query commands on MySQL.
+*MysqlResult* object is the result returned for non-query commands on MySQL.
 
 - **Variables:**
   - *bytes* `header`: The result header as returned in the Mysql connection.
@@ -228,9 +228,9 @@ Class Mysql implements the features need for Mysql database connection and queri
   - *string* `server_status`: The status of the server after executing the corresponding query.
   - *string* `warnings`: The warnings returned from Mysql in the result.
 
-### *class* **`MysqlResultSet`**:
+### **`MysqlResultSet`**
 
-*MysqlResultSet* is the result returned from a query like operation on MySQL table.
+*MysqlResultSet* object is the result returned from a query like operation on MySQL table.
 
 - **Variables:**
   - *List&lt;dictionary&gt;* `fields`: The table fields returned in the response. 
@@ -262,9 +262,9 @@ Class Mysql implements the features need for Mysql database connection and queri
 
   - *List&lt;dictionary&gt;* `rows`: The result rows returned from the query. The content of each dictionary will based on the result of a query.
 
-### *class* **`TermTable`**:
+### **`TermTable`**
 
-*TermTable* implements a simple terminal based table that can be used to display *MysqlResultSet* in CLI based applications.
+*TermTable* class implements a simple terminal based table that can be used to display *MysqlResultSet* in CLI based applications.
 
 - **Constructor:**
   - *MysqlResultSet* `result`: A valid resultset returned from Mysql::query()
@@ -287,8 +287,10 @@ Class Mysql implements the features need for Mysql database connection and queri
 
 
 
-### *class* **`MysqlException`** *inherits* *Exception*:
-  
+### **`MysqlException`** *inherits* *Exception*
+
+Mysql Exception class. This class represents all kinds of MySQL errors.
+
 - **Variables:**
   - *int* `error_code`: The MySQL error code
   - *string* `sql_state`: The MySQL state when the exception occurred.

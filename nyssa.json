@@ -1,0 +1,19 @@
+{
+  "name": "mysql", 
+  "version": "1.0.0", 
+  "description": "A MySQL client implemented in pure Blade.", 
+  "homepage": "", 
+  "tags": [
+    "mysql", 
+    "database", 
+    "sql", 
+    "mysql-client", 
+    "db"
+  ], 
+  "author": "Richard Ore <eqliqandfriends@gmail.com>", 
+  "license": "MIT", 
+  "sources": [
+    "https://nyssa.bladelang.com"
+  ], 
+  "deps": {}
+}

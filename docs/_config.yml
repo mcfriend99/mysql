@@ -2,7 +2,7 @@ markdown:         redcarpet
 highlighter:      pygments
 
 remote_theme: poole/hyde
-url: https://mcfriend99.github.com
+url: mcfriend99.github.io
 
 title: mysql
 tagline: 'A MySQL client implemented in pure Blade.'

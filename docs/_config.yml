@@ -1,5 +1,4 @@
 markdown:         redcarpet
-highlighter:      pygments
 
 remote_theme: tomjoht/documentation-theme-jekyll
 url: mcfriend99.github.io

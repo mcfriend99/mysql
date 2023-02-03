@@ -1,7 +1,7 @@
 markdown:         redcarpet
 highlighter:      pygments
 
-remote_theme: poole/hyde
+remote_theme: tomjoht/documentation-theme-jekyll
 url: mcfriend99.github.io
 baseurl: /mysql/
 

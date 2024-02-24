@@ -1,8 +1,7 @@
 import hash
 import struct
-import iters
-import .util
 import .types { * }
+import .util
 
 
 # Data between client and server is exchanged in packets of max 16MByte size.
@@ -174,7 +173,7 @@ class MysqlPacket {
   }
 
   capabilities_2_bytes(capabilities) {
-    capabilities = ''.join(''.join(iters.map(capabilities.values(), |x| { return to_string(to_number(x)) })).to_list().reverse())
+    capabilities = ''.join(''.join(capabilities.values().map(@(x) { return to_string(to_number(x)) })).to_list().reverse())
     capabilities = util.int_to_bytes(to_number('0b${capabilities}'), 2)
     return capabilities
   }
@@ -461,6 +460,6 @@ class ShowDatabasesPacket < QueryPacket {
   parse(resp) {
     var response = QueryResponsePacket(resp)
     response = response.parse()
-    return iters.map(response.rows, |x| { return x[0] })
+    return response.rows.map(@(x) { return x[0] })
   }
 }

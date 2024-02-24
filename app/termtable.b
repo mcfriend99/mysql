@@ -1,4 +1,3 @@
-import iters
 import .result { 
   MysqlResultSet 
 }
@@ -40,7 +39,7 @@ class TermTable {
     var fk_indicator = options.get('foriegn_key_text', '+FK')
 
     if self._show_header {
-      var fields = iters.map(result.fields, |x| { 
+      var fields = result.fields.map(@(x) { 
         var name = show_length ? '${x.name}(${x.length})' : x.name
 
         if x.flags.primary_key and show_pk
@@ -88,7 +87,7 @@ class TermTable {
   _render_headers() {
     if self._show_header {
       var header = self._items[0]
-      var txt_line = '|' + '|'.join (iters.map(header, | x, i | {
+      var txt_line = '|' + '|'.join (header.map(@(x, i) {
         return ' ${x}'.rpad(self._cell_widths[i] + 2)
       })) + '|'
 
@@ -105,7 +104,7 @@ class TermTable {
       var lines = []
 
       for item in self._items[start,] {
-        lines.append('|' + '|'.join (iters.map(item, | x, i | {
+        lines.append('|' + '|'.join (item.map(@(x, i) {
           x = to_string(x)
           return ' ${x}'.rpad(self._cell_widths[i] + 2)
         })) + '|')

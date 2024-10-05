@@ -28,7 +28,7 @@ class TermTable {
    */
   TermTable(result, options) {
     if !instance_of(result, MysqlResultSet)
-      die Exception('instance of MysqlResultSet expected')
+      raise Exception('instance of MysqlResultSet expected')
     if !options options = {}
 
     self._show_header = options.get('show_header', true)

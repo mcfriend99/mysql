@@ -169,7 +169,7 @@ class MysqlPacket {
     var concat = salt.to_bytes()
     concat += convert.hex_to_bytes(hash.sha1(hash.sha1(password)))
     var bytes2 = convert.hex_to_bytes(hash.sha1(concat))
-    return bytes(util.zip(bytes1, bytes2, |x, y| { return x ^ y }))
+    return bytes(util.zip(bytes1, bytes2, @(x, y) { return x ^ y }))
   }
 
   capabilities_2_bytes(capabilities) {

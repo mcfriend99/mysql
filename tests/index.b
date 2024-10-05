@@ -4,7 +4,7 @@ import ..app { * }
 
 def test() {
   if !file('tests/config.json').exists()
-    die Exception('missing config file.')
+    raise Exception('missing config file.')
 
   var config = json.decode(file('tests/config.json').read())
 
@@ -16,7 +16,7 @@ def test() {
   }
   
   var mysql = Mysql(answers.host, answers.port, answers.user, answers.pass)
-  try {
+  catch {
     if !mysql.connect() {
       echo 'Could not login. Try again!'
     } else {
@@ -47,7 +47,7 @@ def test() {
       
       var query
       while (query = io.readline('Blade MySQL> ')) != 'q' {
-        try {
+        catch {
           var resp = mysql.query(query.trim())
           if instance_of(resp, MysqlResult) {
             echo 'Done. Affected rows: ${resp.affected_rows}'
@@ -58,14 +58,18 @@ def test() {
               show_length: true,
             }).render()
           }
-        } catch MysqlException e {
+        } as e 
+        
+        if e and e.type == 'MysqlException' {
           echo e.message
         }
       }
 
       mysql.close()
     }
-  } catch Exception e {
+  } as e 
+  
+  if e {
     echo e.message
     echo e.stacktrace
   }

@@ -138,7 +138,7 @@ class Mysql {
   # Sending authentication packet
   _login(handshake_packet, packet_number) {
     if !self._client {
-      die MysqlException('Client Error: Invalid state.')
+      raise MysqlException('Client Error: Invalid state.')
     }
 
     var login_packet = LoginPacket(handshake_packet)
@@ -148,7 +148,7 @@ class Mysql {
 
     if instance_of(resp, ErrorPacket) {
       var info = resp.parse()
-      die MysqlException(info)
+      raise MysqlException(info)
     } else if instance_of(resp, OkPacket) {
       return resp.parse().packet_number
     } else if instance_of(resp, EofPacket) {
@@ -191,7 +191,7 @@ class Mysql {
    */
   use_db(db) {
     if !self._client {
-      die MysqlException('Client Error: Invalid state.')
+      raise MysqlException('Client Error: Invalid state.')
     }
 
     var packet = InitDBPacket(db).create_packet()
@@ -200,7 +200,7 @@ class Mysql {
 
     if instance_of(resp, ErrorPacket) {
       var info = resp.parse()
-      die MysqlException(info)
+      raise MysqlException(info)
     } else if instance_of(resp, OkPacket) {
       self._db = db
       return true
@@ -217,7 +217,7 @@ class Mysql {
    */
   databases() {
     if !self._client {
-      die MysqlException('Client Error: Invalid state.')
+      raise MysqlException('Client Error: Invalid state.')
     }
 
     var show_dbs = ShowDatabasesPacket()
@@ -236,14 +236,16 @@ class Mysql {
    */
   query(sql) {
     if !self._client {
-      die MysqlException('Client Error: Invalid state.')
+      raise MysqlException('Client Error: Invalid state.')
     }
 
     var packet = QueryPacket(sql).create_packet()
     self._client.send(packet)
-    try {
+    catch {
       packet = self._detect_packet(self._client.receive(65536).to_bytes())
-    } catch Exception err {
+    } as err 
+    
+    if err {
       return {packet_name: 'unknown'}
     }
 
@@ -252,9 +254,9 @@ class Mysql {
 
     var resp = packet.parse()
     if resp.packet_name == 'EofPackage'
-      die MysqlException('EOF encountered')
+      raise MysqlException('EOF encountered')
     else if resp.packet_name == 'ErrPacket'
-      die MysqlException(resp)
+      raise MysqlException(resp)
     
     if resp.packet_name == 'OkPacket' {
       self.last_insert_id = resp.last_insert_id

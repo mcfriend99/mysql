@@ -1,12 +1,15 @@
 import io
 import json
+import os
 import ..app { * }
 
 def test() {
-  if !file('tests/config.json').exists()
+  var config_file = file(os.join_paths(os.dir_name(__file__), 'config.json'))
+
+  if !config_file.exists()
     raise Exception('missing config file.')
 
-  var config = json.decode(file('tests/config.json').read())
+  var config = json.decode(config_file.read())
 
   var answers = {
     host: config.get('host', 'localhost'),

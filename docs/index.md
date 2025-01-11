@@ -113,7 +113,7 @@ See [TermTable](termtable) for more information.
 
 ## Important Notice
 
-- The library currently only supports MySQL 5.7 and below.
+- The library currently only supports MySQL servers with `native_password` authentication method enabled. This covers all MySQL versions 5.7 and below but may need to be enabled for higher MySQL versions. This library has been tested up to MySQL server 9.0.1.
 - There is no support for prepared statements yet.
 
 ### License

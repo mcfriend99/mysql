@@ -13,7 +13,7 @@ A MySQL client implemented in pure Blade.
 
 ## Installation
 
-You can install the tar library with [Nyssa package manager](https://nyssa.bladelang.com)
+You can install the mysql library with [Nyssa package manager](https://nyssa.bladelang.com)
 
 ```
 nyssa install mysql

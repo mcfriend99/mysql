@@ -161,7 +161,7 @@ class Mysql {
    * Connects to the database
    * 
    * @returns bool indicating if the connection was successful or not.
-   * @throws MysqlException
+   * @raises MysqlException
    */
   connect() {
     if !self._client {
@@ -187,7 +187,7 @@ class Mysql {
    * 
    * @param string db The name of the database.
    * @returns bool
-   * @throws MysqlException
+   * @raises MysqlException
    */
   use_db(db) {
     if !self._client {
@@ -213,7 +213,7 @@ class Mysql {
    * Returns a list of the databases on the server.
    * 
    * @returns List<string> containing the name of the databases in the MySQL instance.
-   * @throws MysqlException when the instance is in an invalid state
+   * @raises MysqlException when the instance is in an invalid state
    */
   databases() {
     if !self._client {
@@ -231,7 +231,7 @@ class Mysql {
    * 
    * @param string sql The SQL query
    * @return MysqlResult|MysqlResultSet
-   * @throws MysqlException
+   * @raises MysqlException
    * @note MysqlResultSet is only returned for SELECT and similar queries.
    */
   query(sql) {
@@ -290,4 +290,40 @@ class Mysql {
  */
 def mysql(host, port, username, password, database) {
   return Mysql(host, port, username, password, database)
+}
+
+/**
+ * Escape a string/alue to be used in a SQL query. If wildcards is 
+ * true then _ and % are masked as well.
+ * 
+ * @param string value
+ * @param bool? wildcards
+ * @returns string
+ * @raises Exception|MysqlException
+ */
+def escape_sql(value, wildcards) {
+  if !is_string(value)
+    raise MysqlException('Value Error: Invalid SQL value string')
+
+  if wildcards != nil and !is_bool(wildcards)
+    raise Exception('Boolean expected in second argument')
+  
+  var escaped = ''
+
+  for s in value {
+    using ord(s) {
+      when 0 escaped += '\\0'
+      when 10 escaped += '\\n'
+      when 13 escaped += '\\r'
+      when 92 escaped += '\\\\'
+      when 39 escaped += "\\'"
+      when 34 escaped += '\\"'
+      when 26 escaped += '\\Z'
+      when 95 escaped += wildcards ? '\\_' : '_'
+      when 37 escaped += wildcards ? '\\%' : '%'
+      default escaped += s
+    }
+  }
+
+  return escaped.trim()
 }

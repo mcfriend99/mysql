@@ -49,7 +49,7 @@ def test() {
       echo ''
       
       var query
-      while (query = io.readline('Blade MySQL> ')) != 'q' {
+      while (query = io.readline('MySQL (${databases[db]})> ')) != 'q' {
         catch {
           var resp = mysql.query(query.trim())
           if instance_of(resp, MysqlResult) {

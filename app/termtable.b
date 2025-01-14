@@ -110,7 +110,6 @@ class TermTable {
         })) + '|')
       }
 
-
       return overline + '\r\n' + '\r\n'.join(lines) + '\r\n' + overline
     }
     return overline

@@ -2,6 +2,8 @@
 
 *MysqlResult* object is the result returned for non-query commands on MySQL.
 
+> @printable
+
 ## Properties
 
 - *bytes* **`header`**: 

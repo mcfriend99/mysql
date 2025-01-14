@@ -1,5 +1,7 @@
 /**
- * MysqlResult object is the result returned for non-query commands on MySQL
+ * MysqlResult object is the result returned for non-query commands on MySQL.
+ * 
+ * @printable
  */
 class MysqlResult {
   /**
@@ -32,10 +34,18 @@ class MysqlResult {
     self.server_status = server_status
     self.warnings = warnings
   }
+
+  @to_string() {
+    return '<MysqlResult affected_rows=${affected_rows} warnings=(${warnings})>'
+  }
 }
 
 /**
  * MysqlResultSet object is the result returned from a query like operation on MySQL table.
+ * 
+ * @printable
+ * @serializable
+ * @iterable
  */
 class MysqlResultSet {
   /**
@@ -78,5 +88,29 @@ class MysqlResultSet {
   MysqlResultSet(packet) {
     self.fields = packet.fields
     self.rows = packet.rows
+  }
+
+  @to_string() {
+    return '<MysqlResultSet rows=${self.rows.length()} fields=${self.fields.length()}>'
+  }
+
+  @to_json() {
+    return self.rows
+  }
+
+  @itern(n) {
+    var length = self.rows.length()
+    if length == 0 return false
+
+    if x == nil return 0
+
+    if x < length - 1
+      return x + 1
+    
+    return false
+  }
+
+  @iter(n) {
+    return self.rows[n]
   }
 }

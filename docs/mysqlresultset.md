@@ -2,6 +2,8 @@
 
 *MysqlResultSet* object is the result returned from a query like operation on MySQL table.
 
+> @printable, @serializable, @iterable
+
 ## Properties
 
 - *List&lt;dictionary&gt;* **`fields`**: 
